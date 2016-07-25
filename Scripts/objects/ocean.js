@@ -34,7 +34,7 @@ var objects;
          * @returns {void}
          */
         Ocean.prototype._reset = function () {
-            this.y = -960;
+            this.x = 0;
         };
         /**
          * This method checks if the object has reached its boundaries
@@ -44,7 +44,7 @@ var objects;
          * @returns {void}
          */
         Ocean.prototype._checkBounds = function () {
-            if (this.y >= 0) {
+            if (this.x <= -1280) {
                 this._reset();
             }
         };
@@ -59,7 +59,7 @@ var objects;
          */
         Ocean.prototype.start = function () {
             this._reset();
-            this._dy = 5; // 5px per frame down
+            this._dx = -5; // 5px per frame down
         };
         /**
          * This method updates the object's properties
@@ -70,7 +70,7 @@ var objects;
          * @returns {void}
          */
         Ocean.prototype.update = function () {
-            this.y += this._dy;
+            this.x += this._dx;
             this._checkBounds();
         };
         return Ocean;

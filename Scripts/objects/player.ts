@@ -53,13 +53,13 @@ module objects {
             // checkbounds to stop player from going outside
 
             // check right bounds
-            if(this.x >= (640 - (this.width * 0.5))) {
-                this.x = (640 - (this.width * 0.5));
+            if(this.y >= (480 - (this.height * 0.5))) {
+                this.y = (480 - (this.height * 0.5));
             }
 
             // check left bounds
-            if(this.x <= (0 + (this.width * 0.5))) {
-                this.x = (0 + (this.width * 0.5));
+            if(this.y <= (0 + (this.height * 0.5))) {
+                this.y = (0 + (this.height * 0.5));
             }
         }
 
@@ -78,7 +78,7 @@ module objects {
             this.height = this.getBounds().height;
             this.regX = this.width * 0.5;
             this.regY = this.height * 0.5;
-            this.y = 430;
+            this.x = 32;
         }
 
         /**
@@ -91,7 +91,7 @@ module objects {
          */
         public update():void {
             // player to follow mouse
-            this.x = core.stage.mouseX;
+            this.y = core.stage.mouseY;
             this._checkBounds();
         }
     }

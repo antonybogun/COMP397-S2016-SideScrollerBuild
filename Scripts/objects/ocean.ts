@@ -8,7 +8,7 @@ module objects {
      */
     export class Ocean extends createjs.Bitmap {
         // PRIVATE INSTANCE VARIABLES ++++++++++++++++++++++++++++
-        private _dy:number;
+        private _dx:number;
 
         // CONSTRUCTORS +++++++++++++++++++++++++++++++++++++++++++
         /**
@@ -32,7 +32,7 @@ module objects {
          * @returns {void}
          */
         private _reset():void {
-            this.y = -960;
+            this.x = 0;
         }
 
         /**
@@ -43,7 +43,7 @@ module objects {
          * @returns {void}
          */
         private _checkBounds():void {
-            if(this.y >= 0) {
+            if(this.x <=-1280) {
                 this._reset();
             }
         }
@@ -60,7 +60,7 @@ module objects {
          */
         public start():void {
             this._reset();
-            this._dy = 5; // 5px per frame down
+            this._dx = -5; // 5px per frame down
         }
 
         /**
@@ -72,7 +72,7 @@ module objects {
          * @returns {void}
          */
         public update():void {
-            this.y += this._dy;
+            this.x += this._dx;
             this._checkBounds();
         }
     }

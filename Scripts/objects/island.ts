@@ -8,7 +8,7 @@ module objects {
      */
     export class Island extends createjs.Bitmap {
         // PRIVATE INSTANCE VARIABLES ++++++++++++++++++++++++++++
-        private _dy:number;
+        private _dx:number;
         private _width:number;
         private _height:number;
 
@@ -53,10 +53,10 @@ module objects {
          * @returns {void}
          */
         private _reset():void {
-            this.y = -this.height;
+             this.y = Math.floor((Math.random() * (480 - (this.width * 0.5))) + (this.width * 0.5));
 
             // get a random x location
-            this.x = Math.floor((Math.random() * (640 - (this.width * 0.5))) + (this.width * 0.5));
+            this.x = 640+this.width;
         }
 
         /**
@@ -67,7 +67,7 @@ module objects {
          * @returns {void}
          */
         private _checkBounds():void {
-            if(this.y >= (480 + (this.height * 0.5))) {
+            if(this.x <=(0-this.width)) {
                 this._reset();
             }
         }
@@ -88,7 +88,7 @@ module objects {
             this.regX = this.width * 0.5;
             this.regY = this.height * 0.5;
             this._reset();
-            this._dy = 5; // 5px per frame down
+            this._dx = -5; // 5px per frame down
         }
 
         /**
@@ -100,7 +100,7 @@ module objects {
          * @returns {void}
          */
         public update():void {
-            this.y += this._dy;
+            this.x += this._dx;
             this._checkBounds();
         }
     }
