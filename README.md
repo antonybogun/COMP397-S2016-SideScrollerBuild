@@ -1,1 +1,1 @@
-# COMP397-S2016-MailPilotBuild for Centennial College
+# COMP397-S2016-Side Scroller Game - Assignment 4
