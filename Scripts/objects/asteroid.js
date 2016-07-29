@@ -6,7 +6,7 @@ var __extends = (this && this.__extends) || function (d, b) {
 var objects;
 (function (objects) {
     /**
-     * This is the Cloud object used in the game
+     * This is the Asteroid object used in the game
      *
      * @export
      * @class Asteroid
@@ -16,7 +16,7 @@ var objects;
         __extends(Asteroid, _super);
         // CONSTRUCTORS +++++++++++++++++++++++++++++++++++++++++++
         /**
-         * Creates an instance of Island.
+         * Creates an instance of Asteroid.
          *
          * @constructor
          * @param {string} imageString
@@ -25,7 +25,6 @@ var objects;
             _super.call(this, imageString);
             this.start();
         }
-
         Object.defineProperty(Asteroid.prototype, "dy", {
             // PUBLIC PROPERTIES +++++++++++++++++++++++++++++++++++++++
             get: function () {

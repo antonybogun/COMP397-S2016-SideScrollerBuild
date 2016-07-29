@@ -6,7 +6,7 @@ var __extends = (this && this.__extends) || function (d, b) {
 var objects;
 (function (objects) {
     /**
-     * This is the Ocean object used in the game
+     * This is the Space object used in the game
      *
      * @export
      * @class Space

@@ -18,7 +18,7 @@ var objects;
         // PUBLIC PROPERTIES +++++++++++++++++++++++++++++++++++++++
         // CONSTRUCTORS +++++++++++++++++++++++++++++++++++++++++++
         /**
-         * Creates an instance of Island.
+         * Creates an instance of Player.
          *
          * @constructor
          * @param {string} imageString

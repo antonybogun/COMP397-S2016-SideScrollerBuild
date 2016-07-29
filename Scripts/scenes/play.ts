@@ -7,7 +7,7 @@ module scenes {
         private _asteroids:objects.Asteroid[];
         private _collision:managers.Collision;
         private _scoreLabel:objects.Label;
-        private _livesLabel:objects.Label;
+        private _liveIcons:createjs.Bitmap[];
         private _themeSound:createjs.AbstractSoundInstance;
 
         /**
@@ -19,7 +19,9 @@ module scenes {
         }
 
         private _updateScoreBoard() {
-            this._livesLabel.text = "Lives: " + core.lives;
+            for (let i = core.startingLives - 1; i > core.currentLives - 1; i--) {
+                this._liveIcons[i].visible = false;
+            }
             this._scoreLabel.text = "Score: " + core.score;
         }
 
@@ -51,11 +53,18 @@ module scenes {
             // include a collision managers
             this._collision = new managers.Collision();
 
-            // add lives and score label
-            this._livesLabel = new objects.Label("Lives: " + core.lives, "40px", "Consolas", "#FFFF00", 10, 5, false);
-            this.addChild(this._livesLabel);
+            // lives array
+            this._liveIcons = new Array<createjs.Bitmap>();
+            for (let i = 0; i < core.startingLives; i++) {
+                this._liveIcons.push(new createjs.Bitmap(core.assets.getResult("live")));
+                this._liveIcons[i].x = 10 + i * this._liveIcons[0].getBounds().width;
+                this._liveIcons[i].y = 5;
+                this.addChild(this._liveIcons[i]);
+            }
 
-            this._scoreLabel = new objects.Label("Score: " + core.score, "40px", "Consolas", "#FFFF00", 350, 5, false);
+            // add core label
+            this._scoreLabel = new objects.Label("Score: " + core.score, "40px", "Consolas", "#e74c3c", 450, 5, false);
+            this._scoreLabel.textAlign = "center";
             this.addChild(this._scoreLabel);
 
             // add this scene to the global scene container
@@ -81,7 +90,7 @@ module scenes {
 
             this._updateScoreBoard();
 
-            if (core.lives < 1) {
+            if (core.currentLives < 1) {
                 createjs.Sound.stop();
                 createjs.Sound.play("over");
                 core.scene = config.Scene.OVER;
@@ -91,10 +100,5 @@ module scenes {
 
         // EVENT HANDLERS ++++++++++++++++
 
-        private _startButtonClick(event:createjs.MouseEvent):void {
-            // Switch the scene
-            core.scene = config.Scene.OVER;
-            core.changeScene();
-        }
     }
 }

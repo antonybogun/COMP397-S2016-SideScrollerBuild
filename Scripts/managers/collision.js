@@ -1,16 +1,26 @@
 var managers;
 (function (managers) {
+    /**
+     * Manages collision detection in the game
+     *
+     * @export
+     * @class Collision
+     */
     var Collision = (function () {
         function Collision() {
             this.start();
         }
-
         Collision.prototype.start = function () {
         };
         Collision.prototype.update = function () {
         };
+        /**
+         * Check either two objects is colliding
+         *
+         * @param object1
+         * @param object2
+         */
         Collision.prototype.check = function (object1, object2) {
-            //check to see if object is colliding
             if (objects.Vector2.distance(object1.position, object2.position)
                 <= (object1.halfHeight + object2.halfHeight)) {
                 // if asteroid collides with another one
@@ -36,7 +46,7 @@ var managers;
                         object2.isColliding = true;
                         // if plane collides with cloud
                         if (object2.name === "asteroid") {
-                            core.lives -= 1;
+                            core.currentLives -= 1;
                             createjs.Sound.play("explosion");
                         }
                         // if plane collides with island

@@ -1,11 +1,8 @@
 var __extends = (this && this.__extends) || function (d, b) {
-        for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-        function __() {
-            this.constructor = d;
-        }
-
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var objects;
 (function (objects) {
     /**
@@ -18,15 +15,10 @@ var objects;
     var Vector2 = (function (_super) {
         __extends(Vector2, _super);
         function Vector2(x, y) {
-            if (x === void 0) {
-                x = 0;
-            }
-            if (y === void 0) {
-                y = 0;
-            }
+            if (x === void 0) { x = 0; }
+            if (y === void 0) { y = 0; }
             _super.call(this, x, y);
         }
-
         /**
          * This method returns the distance between two Vector2 objects (a and b)
          *

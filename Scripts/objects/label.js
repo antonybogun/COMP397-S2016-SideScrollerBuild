@@ -6,7 +6,7 @@ var __extends = (this && this.__extends) || function (d, b) {
 var objects;
 (function (objects) {
     /**
-     * This is a generic Label class for the Game BoilerPlate
+     * This is a generic Label class
      *
      * @export
      * @class Label

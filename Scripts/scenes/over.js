@@ -35,7 +35,7 @@ var scenes;
         // EVENT HANDLERS ++++++++++++++++
         Over.prototype._restartButtonClick = function (event) {
             // Switch the scene
-            core.lives = 5;
+            core.currentLives = core.startingLives;
             core.score = 0;
             core.scene = config.Scene.PLAY;
             core.changeScene();

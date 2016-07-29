@@ -1,11 +1,13 @@
 /// <reference path="_reference.ts"/>
 
 /**
- * @author Tom Tsiliopoulos ttsliop@my.centennialcollege.ca
- * @studentID 300818577
- * @date July 11, 2016
+ * @author Anton Bogun
+ * @author Liavontsi Brechka
+ * @studentID
+ * @studentID 300800345
+ * @date July 28, 2016
  * @description This file is the entry point for the game
- * @version 0.1 - Initial version of the boilerplate
+ * @version 0.1 - Initial version of the side scroller
  */
 
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -21,13 +23,12 @@ namespace core {
     // create a reference to a stage container
     export let stage:createjs.Stage;
 
-    // score and lives variables
+    // score, startingLives and currentLives variables
     export let score:number = 0;
-    export let highScore:number = 0;
-    export let lives:number = 5;
-
-    let helloLabel:objects.Label;
-
+    // export let highScore:number = 0;
+    export let startingLives:number = 5;
+    export let currentLives:number = startingLives;
+    
     let startButton:objects.Button; // reference to our button class
 
     // declare scene variables
@@ -51,6 +52,7 @@ namespace core {
         {id: "sheep", src: "Assets/images/sheep.png"},
         {id: "asteroid", src: "Assets/images/asteroid.png"},
         {id: "space", src: "Assets/images/space.png"},
+        {id: "live", src: "Assets/images/live.png"},
         {id: "baaaa", src: "Assets/audio/baaaa.wav"},
         {id: "explosion", src: "Assets/audio/explosion.wav"},
         {id: "main_theme", src: "Assets/audio/main_theme.ogg"},
@@ -103,8 +105,13 @@ namespace core {
         stage.update(); // refreshes the stage
     }
 
+    /**
+     * Changes current scene
+     *
+     * @method changeScene
+     * @returns {void}
+     */
     export function changeScene():void {
-
         //Launch Various Scenes
         switch (scene) {
             // Show the MENU Scene

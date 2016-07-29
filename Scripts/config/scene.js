@@ -1,5 +1,11 @@
 var config;
 (function (config) {
+    /**
+     * Enumeration-like class that contains appropriate scene value
+     *
+     * @export
+     * @class Scene
+     */
     var Scene = (function () {
         function Scene() {
         }

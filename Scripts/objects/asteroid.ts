@@ -1,6 +1,6 @@
 module objects {
     /**
-     * This is the Cloud object used in the game
+     * This is the Asteroid object used in the game
      *
      * @export
      * @class Asteroid
@@ -30,7 +30,7 @@ module objects {
 
         // CONSTRUCTORS +++++++++++++++++++++++++++++++++++++++++++
         /**
-         * Creates an instance of Island.
+         * Creates an instance of Asteroid.
          *
          * @constructor
          * @param {string} imageString
