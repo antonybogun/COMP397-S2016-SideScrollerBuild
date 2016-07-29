@@ -11,6 +11,10 @@ var core;
 (function (core) {
     // make a reference to the canvas element
     var canvas = document.getElementById("canvas");
+    // score and lives variables
+    core.score = 0;
+    core.highScore = 0;
+    core.lives = 5;
     var helloLabel;
     var startButton; // reference to our button class
     // declare scene variables
@@ -18,16 +22,22 @@ var core;
     var menu;
     var over;
     var play;
+    var instructions;
     // asset manifest for images and sounds
     var assetData = [
-        { id: "startButton", src: "../../Assets/images/startButton.png" },
-        { id: "restartButton", src: "../../Assets/images/restartButton.png" },
-        { id: "nextButton", src: "../../Assets/images/nextButton.png" },
-        { id: "exitButton", src: "../../Assets/images/exitButton.png" },
-        { id: "ocean", src: "../../Assets/images/ocean.gif" },
-        { id: "island", src: "../../Assets/images/island.png" },
-        { id: "plane", src: "../../Assets/images/plane.png" },
-        { id: "cloud", src: "../../Assets/images/cloud.png" }
+        {id: "startButton", src: "Assets/images/startButton.png"},
+        {id: "instructionsButton", src: "Assets/images/instructionsButton.png"},
+        {id: "restartButton", src: "Assets/images/restartButton.png"},
+        {id: "nextButton", src: "Assets/images/nextButton.png"},
+        {id: "exitButton", src: "Assets/images/exitButton.png"},
+        {id: "island", src: "Assets/images/island.png"},
+        {id: "sheep", src: "Assets/images/sheep.png"},
+        {id: "asteroid", src: "Assets/images/asteroid.png"},
+        {id: "space", src: "Assets/images/space.png"},
+        {id: "baaaa", src: "Assets/audio/baaaa.wav"},
+        {id: "explosion", src: "Assets/audio/explosion.wav"},
+        {id: "main_theme", src: "Assets/audio/main_theme.ogg"},
+        {id: "over", src: "Assets/audio/over.wav"}
     ];
     /**
      * This method preloads assets for the game
@@ -68,14 +78,6 @@ var core;
         currentScene.Update();
         core.stage.update(); // refreshes the stage
     }
-    /**
-     * This is the startButton click event handler
-     *
-     * @param {createjs.MouseEvent} event
-     */
-    function startButtonClick(event) {
-        helloLabel.text = "clicked!";
-    }
     function changeScene() {
         //Launch Various Scenes
         switch (core.scene) {
@@ -96,6 +98,12 @@ var core;
                 core.stage.removeAllChildren();
                 over = new scenes.Over();
                 currentScene = over;
+                break;
+            // Shot the INSTRUCTIONS Scene
+            case config.Scene.INSTRUCTIONS:
+                core.stage.removeAllChildren();
+                instructions = new scenes.Instructions();
+                currentScene = instructions;
                 break;
         }
     }
