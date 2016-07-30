@@ -58,6 +58,7 @@ module scenes {
 
         public Update():void {
             this._space.update();
+            this._gameOverLabel.alpha ==1?this._gameOverLabel.alpha=0:this._gameOverLabel.alpha=1;
             // scene updates happen here...
         }
 

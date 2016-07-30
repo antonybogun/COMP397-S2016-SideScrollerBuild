@@ -47,10 +47,7 @@ var scenes;
         };
         Menu.prototype.Update = function () {
             this._space.update();
-            if (this._menuLabel.alpha == 1)
-                this._menuLabel.alpha = 0.3;
-            else
-                this._menuLabel.alpha = 1;
+            this._menuLabel.alpha == 1 ? this._menuLabel.alpha = 0 : this._menuLabel.alpha = 1;
             // scene updates happen here...
         };
         // EVENT HANDLERS ++++++++++++++++

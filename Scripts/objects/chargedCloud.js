@@ -114,10 +114,7 @@ var objects;
             this._checkBounds();
             this.position.x = this.x;
             this.position.y = this.y;
-            if (this.alpha == 1)
-                this.alpha = 0;
-            else
-                this.alpha = 1;
+            this.alpha == 1 ? this.alpha = 0 : this.alpha = 1;
         };
         return ChargedCloud;
     }(objects.GameObject));
