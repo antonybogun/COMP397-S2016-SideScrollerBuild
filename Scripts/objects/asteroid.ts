@@ -1,45 +1,42 @@
 module objects {
     /**
-     * This is the Cloud object used in the game
-     * 
+     * This is the Asteroid object used in the game
+     *
      * @export
-     * @class Cloud
+     * @class Asteroid
      * @extends {createjs.Bitmap}
      */
-    export class Cloud extends createjs.Bitmap {
+    export class Asteroid extends GameObject {
         // PRIVATE INSTANCE VARIABLES ++++++++++++++++++++++++++++
         private _dy:number;
         private _dx:number;
-        private _width:number;
-        private _height:number;
 
-        // PUBLIC PROPERTIES
-
-        get width():number {
-            return this._width;
+        // PUBLIC PROPERTIES +++++++++++++++++++++++++++++++++++++++
+        get dy():number {
+            return this._dy;
         }
 
-        set width(newWidth:number) {
-            this._width = newWidth;
+        set dy(newDy:number) {
+            this._dy = newDy;
         }
 
-        get height():number {
-            return this._height;
+        get dx():number {
+            return this._dx;
         }
 
-        set height(newHeight:number) {
-            this._height = newHeight;
+        set dx(newDx:number) {
+            this._dx = newDx;
         }
 
         // CONSTRUCTORS +++++++++++++++++++++++++++++++++++++++++++
         /**
-         * Creates an instance of Island.
-         * 
+         * Creates an instance of Asteroid.
+         *
          * @constructor
          * @param {string} imageString
          */
-        constructor(imageString: string) {
-            super(core.assets.getResult(imageString));
+        constructor(imageString:string) {
+            super(imageString);
 
             this.start();
         }
@@ -48,41 +45,41 @@ module objects {
         /**
          * Resets the object outside of the viewport
          * and sets the x and y locations
-         * 
+         *
          * @private
          * @method _reset
          * @returns {void}
          */
         private _reset():void {
-            this._dx = -Math.floor((Math.random() * 5) + 5); // vertical speed
-            this._dy = -Math.floor((Math.random() * 4) - 2); // horizontal drift
+            this._dx = -Math.floor((Math.random() * 5) + 5); // horizontal speed
+            this._dy = -Math.floor((Math.random() * 4) - 2); // vertical drift
 
+            // get a random y location
             this.y = Math.floor((Math.random() * (480 - (this.width * 0.5))) + (this.width * 0.5));
 
-            // get a random x location
-            this.x = 640+this.width;
+            this.x = 640 + this.width;
         }
 
         /**
          * This method checks if the object has reached its boundaries
-         * 
+         *
          * @private
          * @method _checkBounds
          * @returns {void}
          */
         private _checkBounds():void {
-            if(this.x <=(0-this.width)) {
+            if (this.x <= (0 - this.width)) {
                 this._reset();
             }
         }
-        
+
         // PUBLIC METHODS +++++++++++++++++++++++++++++++++++++++++++++
 
         /**
-         * This method is used to initialize public properties 
+         * This method is used to initialize public properties
          * and private instance variables
-         * 
-         * @public 
+         *
+         * @public
          * @method start
          * @returns {void}
          */
@@ -97,8 +94,8 @@ module objects {
         /**
          * This method updates the object's properties
          * every time it's called
-         * 
-         * @public 
+         *
+         * @public
          * @method update
          * @returns {void}
          */
@@ -106,6 +103,8 @@ module objects {
             this.y += this._dy;
             this.x += this._dx;
             this._checkBounds();
+            this.position.x = this.x;
+            this.position.y = this.y;
         }
     }
 }

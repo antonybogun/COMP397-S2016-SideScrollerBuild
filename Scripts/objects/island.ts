@@ -6,30 +6,11 @@ module objects {
      * @class Island
      * @extends {createjs.Bitmap}
      */
-    export class Island extends createjs.Bitmap {
+    export class Island extends GameObject {
         // PRIVATE INSTANCE VARIABLES ++++++++++++++++++++++++++++
         private _dx:number;
-        private _width:number;
-        private _height:number;
 
         // PUBLIC PROPERTIES
-
-        get width():number {
-            return this._width;
-        }
-
-        set width(newWidth:number) {
-            this._width = newWidth;
-        }
-
-        get height():number {
-            return this._height;
-        }
-
-        set height(newHeight:number) {
-            this._height = newHeight;
-        }
-
         // CONSTRUCTORS +++++++++++++++++++++++++++++++++++++++++++
         /**
          * Creates an instance of Island.
@@ -38,7 +19,7 @@ module objects {
          * @param {string} imageString
          */
         constructor(imageString: string) {
-            super(core.assets.getResult(imageString));
+            super(imageString);
 
             this.start();
         }
@@ -102,6 +83,8 @@ module objects {
         public update():void {
             this.x += this._dx;
             this._checkBounds();
+            this.position.x = this.x;
+            this.position.y = this.y;
         }
     }
 }

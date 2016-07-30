@@ -3,45 +3,46 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
+/**
+ * Created by Leonti on 2016-07-28.
+ */
 var scenes;
 (function (scenes) {
-    var Over = (function (_super) {
-        __extends(Over, _super);
+    var Instructions = (function (_super) {
+        __extends(Instructions, _super);
         /**
-         * Creates an instance of Menu.
+         * Creates an instance of Instructions scene.
          *
          */
-        function Over() {
+        function Instructions() {
             _super.call(this);
         }
         /**
          *
          */
-        Over.prototype.Start = function () {
+        Instructions.prototype.Start = function () {
             // Add Menu Label
-            this._gameOverLabel = new objects.Label("GAME OVER", "60px", "Consolas", "#000000", 320, 240);
-            this.addChild(this._gameOverLabel);
+            this._instructionsLabel = new objects.Label("Instruction goes here", "60px", "Consolas", "#000000", 320, 240);
+            this.addChild(this._instructionsLabel);
             // add the start button
-            this._restartButton = new objects.Button("restartButton", 320, 420, true);
-            this.addChild(this._restartButton);
+            this._startButton = new objects.Button("startButton", 320, 420, true);
+            this.addChild(this._startButton);
             // Start button event listener
-            this._restartButton.on("click", this._restartButtonClick, this);
+            this._startButton.on("click", this._startButtonClick, this);
             // add this scene to the global scene container
             core.stage.addChild(this);
         };
-        Over.prototype.Update = function () {
+        Instructions.prototype.Update = function () {
             // scene updates happen here...
         };
         // EVENT HANDLERS ++++++++++++++++
-        Over.prototype._restartButtonClick = function (event) {
+        Instructions.prototype._startButtonClick = function (event) {
             // Switch the scene
-            core.currentLives = core.startingLives;
-            core.score = 0;
             core.scene = config.Scene.PLAY;
             core.changeScene();
         };
-        return Over;
+        return Instructions;
     }(objects.Scene));
-    scenes.Over = Over;
+    scenes.Instructions = Instructions;
 })(scenes || (scenes = {}));
-//# sourceMappingURL=over.js.map
+//# sourceMappingURL=instructions.js.map

@@ -14,38 +14,19 @@ var objects;
      */
     var Player = (function (_super) {
         __extends(Player, _super);
+        // PRIVATE INSTANCE VARIABLES ++++++++++++++++++++++++++++
+        // PUBLIC PROPERTIES +++++++++++++++++++++++++++++++++++++++
         // CONSTRUCTORS +++++++++++++++++++++++++++++++++++++++++++
         /**
-         * Creates an instance of Island.
+         * Creates an instance of Player.
          *
          * @constructor
          * @param {string} imageString
          */
         function Player(imageString) {
-            _super.call(this, core.assets.getResult(imageString));
+            _super.call(this, imageString);
             this.start();
         }
-        Object.defineProperty(Player.prototype, "width", {
-            // PUBLIC PROPERTIES +++++++++++++++++++++++++++++++++++++++
-            get: function () {
-                return this._width;
-            },
-            set: function (newWidth) {
-                this._width = newWidth;
-            },
-            enumerable: true,
-            configurable: true
-        });
-        Object.defineProperty(Player.prototype, "height", {
-            get: function () {
-                return this._height;
-            },
-            set: function (newHeight) {
-                this._height = newHeight;
-            },
-            enumerable: true,
-            configurable: true
-        });
         /**
         * This method checks if the object has reached its boundaries
         *
@@ -60,8 +41,8 @@ var objects;
                 this.y = (480 - (this.height * 0.5));
             }
             // check left bounds
-            if (this.y <= (0 + (this.height * 0.5))) {
-                this.y = (0 + (this.height * 0.5));
+            if (this.y <= this.height * 0.5) {
+                this.y = this.height * 0.5;
             }
         };
         // PUBLIC METHODS +++++++++++++++++++++++++++++++++++++++++++++
@@ -78,7 +59,7 @@ var objects;
             this.height = this.getBounds().height;
             this.regX = this.width * 0.5;
             this.regY = this.height * 0.5;
-            this.x = 32;
+            this.x = 64;
         };
         /**
          * This method updates the object's properties
@@ -92,9 +73,11 @@ var objects;
             // player to follow mouse
             this.y = core.stage.mouseY;
             this._checkBounds();
+            this.position.x = this.x;
+            this.position.y = this.y;
         };
         return Player;
-    }(createjs.Bitmap));
+    }(objects.GameObject));
     objects.Player = Player;
 })(objects || (objects = {}));
 //# sourceMappingURL=player.js.map

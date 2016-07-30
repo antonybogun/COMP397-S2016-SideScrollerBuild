@@ -14,6 +14,7 @@ var objects;
      */
     var Island = (function (_super) {
         __extends(Island, _super);
+        // PUBLIC PROPERTIES
         // CONSTRUCTORS +++++++++++++++++++++++++++++++++++++++++++
         /**
          * Creates an instance of Island.
@@ -22,30 +23,9 @@ var objects;
          * @param {string} imageString
          */
         function Island(imageString) {
-            _super.call(this, core.assets.getResult(imageString));
+            _super.call(this, imageString);
             this.start();
         }
-        Object.defineProperty(Island.prototype, "width", {
-            // PUBLIC PROPERTIES
-            get: function () {
-                return this._width;
-            },
-            set: function (newWidth) {
-                this._width = newWidth;
-            },
-            enumerable: true,
-            configurable: true
-        });
-        Object.defineProperty(Island.prototype, "height", {
-            get: function () {
-                return this._height;
-            },
-            set: function (newHeight) {
-                this._height = newHeight;
-            },
-            enumerable: true,
-            configurable: true
-        });
         // PRIVATE METHODS ++++++++++++++++++++++++++++++++++++++++++++
         /**
          * Resets the object outside of the viewport
@@ -100,9 +80,11 @@ var objects;
         Island.prototype.update = function () {
             this.x += this._dx;
             this._checkBounds();
+            this.position.x = this.x;
+            this.position.y = this.y;
         };
         return Island;
-    }(createjs.Bitmap));
+    }(objects.GameObject));
     objects.Island = Island;
 })(objects || (objects = {}));
 //# sourceMappingURL=island.js.map

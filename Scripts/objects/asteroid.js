@@ -6,42 +6,42 @@ var __extends = (this && this.__extends) || function (d, b) {
 var objects;
 (function (objects) {
     /**
-     * This is the Cloud object used in the game
+     * This is the Asteroid object used in the game
      *
      * @export
-     * @class Cloud
+     * @class Asteroid
      * @extends {createjs.Bitmap}
      */
-    var Cloud = (function (_super) {
-        __extends(Cloud, _super);
+    var Asteroid = (function (_super) {
+        __extends(Asteroid, _super);
         // CONSTRUCTORS +++++++++++++++++++++++++++++++++++++++++++
         /**
-         * Creates an instance of Island.
+         * Creates an instance of Asteroid.
          *
          * @constructor
          * @param {string} imageString
          */
-        function Cloud(imageString) {
-            _super.call(this, core.assets.getResult(imageString));
+        function Asteroid(imageString) {
+            _super.call(this, imageString);
             this.start();
         }
-        Object.defineProperty(Cloud.prototype, "width", {
-            // PUBLIC PROPERTIES
+        Object.defineProperty(Asteroid.prototype, "dy", {
+            // PUBLIC PROPERTIES +++++++++++++++++++++++++++++++++++++++
             get: function () {
-                return this._width;
+                return this._dy;
             },
-            set: function (newWidth) {
-                this._width = newWidth;
+            set: function (newDy) {
+                this._dy = newDy;
             },
             enumerable: true,
             configurable: true
         });
-        Object.defineProperty(Cloud.prototype, "height", {
+        Object.defineProperty(Asteroid.prototype, "dx", {
             get: function () {
-                return this._height;
+                return this._dx;
             },
-            set: function (newHeight) {
-                this._height = newHeight;
+            set: function (newDx) {
+                this._dx = newDx;
             },
             enumerable: true,
             configurable: true
@@ -55,11 +55,11 @@ var objects;
          * @method _reset
          * @returns {void}
          */
-        Cloud.prototype._reset = function () {
-            this._dx = -Math.floor((Math.random() * 5) + 5); // vertical speed
-            this._dy = -Math.floor((Math.random() * 4) - 2); // horizontal drift
+        Asteroid.prototype._reset = function () {
+            this._dx = -Math.floor((Math.random() * 5) + 5); // horizontal speed
+            this._dy = -Math.floor((Math.random() * 4) - 2); // vertical drift
+            // get a random y location
             this.y = Math.floor((Math.random() * (480 - (this.width * 0.5))) + (this.width * 0.5));
-            // get a random x location
             this.x = 640 + this.width;
         };
         /**
@@ -69,7 +69,7 @@ var objects;
          * @method _checkBounds
          * @returns {void}
          */
-        Cloud.prototype._checkBounds = function () {
+        Asteroid.prototype._checkBounds = function () {
             if (this.x <= (0 - this.width)) {
                 this._reset();
             }
@@ -83,7 +83,7 @@ var objects;
          * @method start
          * @returns {void}
          */
-        Cloud.prototype.start = function () {
+        Asteroid.prototype.start = function () {
             this.width = this.getBounds().width;
             this.height = this.getBounds().height;
             this.regX = this.width * 0.5;
@@ -98,13 +98,15 @@ var objects;
          * @method update
          * @returns {void}
          */
-        Cloud.prototype.update = function () {
+        Asteroid.prototype.update = function () {
             this.y += this._dy;
             this.x += this._dx;
             this._checkBounds();
+            this.position.x = this.x;
+            this.position.y = this.y;
         };
-        return Cloud;
-    }(createjs.Bitmap));
-    objects.Cloud = Cloud;
+        return Asteroid;
+    }(objects.GameObject));
+    objects.Asteroid = Asteroid;
 })(objects || (objects = {}));
-//# sourceMappingURL=cloud.js.map
+//# sourceMappingURL=asteroid.js.map

@@ -1,9 +1,10 @@
 {
-  "name": "comp397-s2016-lesson8",
+  "name": "comp397-s2016-SideScrollerBuild",
   "authors": [
-    "Tom Tsiliopoulos <tsiliopoulos@hotmail.com>"
+    "Anton Bogun",
+    "Liavontsi Brechka"
   ],
-  "description": "BoilerPlate for COMP397",
+  "description": "Assignment 4 - The Side Scroller",
   "main": "",
   "license": "MIT",
   "homepage": "",

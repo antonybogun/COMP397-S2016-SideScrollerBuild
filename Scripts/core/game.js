@@ -1,33 +1,46 @@
 /// <reference path="_reference.ts"/>
 /**
- * @author Tom Tsiliopoulos ttsliop@my.centennialcollege.ca
- * @studentID 300818577
- * @date July 11, 2016
+ * @author Anton Bogun
+ * @author Liavontsi Brechka
+ * @studentID
+ * @studentID 300800345
+ * @date July 28, 2016
  * @description This file is the entry point for the game
- * @version 0.1 - Initial version of the boilerplate
+ * @version 0.1 - Initial version of the side scroller
  */
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 var core;
 (function (core) {
     // make a reference to the canvas element
     var canvas = document.getElementById("canvas");
-    var helloLabel;
+    // score, startingLives and currentLives variables
+    core.score = 0;
+    // export let highScore:number = 0;
+    core.startingLives = 5;
+    core.currentLives = core.startingLives;
     var startButton; // reference to our button class
     // declare scene variables
     var currentScene;
     var menu;
     var over;
     var play;
+    var instructions;
     // asset manifest for images and sounds
     var assetData = [
-        { id: "startButton", src: "../../Assets/images/startButton.png" },
-        { id: "restartButton", src: "../../Assets/images/restartButton.png" },
-        { id: "nextButton", src: "../../Assets/images/nextButton.png" },
-        { id: "exitButton", src: "../../Assets/images/exitButton.png" },
-        { id: "ocean", src: "../../Assets/images/ocean.gif" },
-        { id: "island", src: "../../Assets/images/island.png" },
-        { id: "plane", src: "../../Assets/images/plane.png" },
-        { id: "cloud", src: "../../Assets/images/cloud.png" }
+        { id: "startButton", src: "Assets/images/startButton.png" },
+        { id: "instructionsButton", src: "Assets/images/instructionsButton.png" },
+        { id: "restartButton", src: "Assets/images/restartButton.png" },
+        { id: "nextButton", src: "Assets/images/nextButton.png" },
+        { id: "exitButton", src: "Assets/images/exitButton.png" },
+        { id: "island", src: "Assets/images/island.png" },
+        { id: "sheep", src: "Assets/images/sheep.png" },
+        { id: "asteroid", src: "Assets/images/asteroid.png" },
+        { id: "space", src: "Assets/images/space.png" },
+        { id: "live", src: "Assets/images/live.png" },
+        { id: "baaaa", src: "Assets/audio/baaaa.wav" },
+        { id: "explosion", src: "Assets/audio/explosion.wav" },
+        { id: "main_theme", src: "Assets/audio/main_theme.ogg" },
+        { id: "over", src: "Assets/audio/over.wav" }
     ];
     /**
      * This method preloads assets for the game
@@ -69,13 +82,11 @@ var core;
         core.stage.update(); // refreshes the stage
     }
     /**
-     * This is the startButton click event handler
+     * Changes current scene
      *
-     * @param {createjs.MouseEvent} event
+     * @method changeScene
+     * @returns {void}
      */
-    function startButtonClick(event) {
-        helloLabel.text = "clicked!";
-    }
     function changeScene() {
         //Launch Various Scenes
         switch (core.scene) {
@@ -96,6 +107,12 @@ var core;
                 core.stage.removeAllChildren();
                 over = new scenes.Over();
                 currentScene = over;
+                break;
+            // Shot the INSTRUCTIONS Scene
+            case config.Scene.INSTRUCTIONS:
+                core.stage.removeAllChildren();
+                instructions = new scenes.Instructions();
+                currentScene = instructions;
                 break;
         }
     }
