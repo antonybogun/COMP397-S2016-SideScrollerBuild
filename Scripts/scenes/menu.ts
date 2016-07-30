@@ -11,10 +11,10 @@
 module scenes {
     export class Menu extends objects.Scene {
         //  PRIVATE INSTANCE VARIABLES
-        private _space:objects.Space;
-        private _menuLabel:objects.Label;
-        private _startButton:objects.Button;
-        private _instructionsButton:objects.Button;
+        private _space: objects.Space;
+        private _menuLabel: objects.Label;
+        private _startButton: objects.Button;
+        private _instructionsButton: objects.Button;
 
         /**
          * Creates an instance of Menu.
@@ -27,7 +27,7 @@ module scenes {
         /**
          *
          */
-        public Start():void {
+        public Start(): void {
             this._space = new objects.Space("space");
             this.addChild(this._space);
 
@@ -58,21 +58,21 @@ module scenes {
             core.stage.addChild(this);
         }
 
-        public Update():void {
+        public Update(): void {
             this._space.update();
-            this._menuLabel.alpha ==1?this._menuLabel.alpha=0:this._menuLabel.alpha=1;
+            this._menuLabel.alpha == 1 ? this._menuLabel.alpha = 0 : this._menuLabel.alpha = 1;
             // scene updates happen here...
         }
 
         // EVENT HANDLERS ++++++++++++++++
 
-        private _startButtonClick(event:createjs.MouseEvent):void {
+        private _startButtonClick(event: createjs.MouseEvent): void {
             // Switch the scene
             core.scene = config.Scene.PLAY;
             core.changeScene();
         }
 
-        private _instructionsButtonClick(event:createjs.MouseEvent):void {
+        private _instructionsButtonClick(event: createjs.MouseEvent): void {
             // Switch the scene
             core.scene = config.Scene.INSTRUCTIONS;
             core.changeScene();

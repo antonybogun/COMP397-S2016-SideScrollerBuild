@@ -11,10 +11,10 @@
 module scenes {
     export class Over extends objects.Scene {
         //  PRIVATE INSTANCE VARIABLES
-        private _space:objects.Space;
-        private _gameOverLabel:objects.Label;
-        private _finalScoreLabel:objects.Label;
-        private _restartButton:objects.Button;
+        private _space: objects.Space;
+        private _gameOverLabel: objects.Label;
+        private _finalScoreLabel: objects.Label;
+        private _restartButton: objects.Button;
 
         /**
          * Creates an instance of Menu.
@@ -27,19 +27,19 @@ module scenes {
         /**
          *
          */
-        public Start():void {
+        public Start(): void {
             this._space = new objects.Space("space");
             this.addChild(this._space);
             // Add Menu Label
             this._gameOverLabel = new objects.Label(
                 "GAME OVER", "40px", "Broadway", "#7200ff",
-                320, 140,true
+                320, 140, true
             );
             this.addChild(this._gameOverLabel);
 
             this._finalScoreLabel = new objects.Label(
-                "FINAL SCORE: " + core.score , "40px", "Broadway", "#7200ff",
-                320, 240,true
+                "FINAL SCORE: " + core.score, "40px", "Broadway", "#7200ff",
+                320, 240, true
             );
             this.addChild(this._finalScoreLabel);
 
@@ -56,15 +56,15 @@ module scenes {
             core.stage.addChild(this);
         }
 
-        public Update():void {
+        public Update(): void {
             this._space.update();
-            this._gameOverLabel.alpha ==1?this._gameOverLabel.alpha=0:this._gameOverLabel.alpha=1;
+            this._gameOverLabel.alpha == 1 ? this._gameOverLabel.alpha = 0 : this._gameOverLabel.alpha = 1;
             // scene updates happen here...
         }
 
         // EVENT HANDLERS ++++++++++++++++
 
-        private _restartButtonClick(event:createjs.MouseEvent):void {
+        private _restartButtonClick(event: createjs.MouseEvent): void {
             // Switch the scene
             core.currentLives = core.startingLives;
             core.score = 0;
