@@ -1,6 +1,13 @@
 /**
- * Created by Leonti on 2016-07-28.
+ * @author Anton Bogun
+ * @author Liavontsi Brechka
+ * @studentID 300863440
+ * @studentID 300800345
+ * @date July 29, 2016
+ * @description This file is the entry point for the game
+ * @version 0.1 - Initial version of the side scroller
  */
+
 module scenes {
     export class Instructions extends objects.Scene {
         //  PRIVATE INSTANCE VARIABLES

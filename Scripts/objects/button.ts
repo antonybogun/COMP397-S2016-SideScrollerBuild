@@ -1,8 +1,11 @@
 /**
- * @author Tom Tsiliopoulos ttsliop@my.centennialcollege.ca
- * @studentID 300818577
- * @date July 4, 2016
- * @version 0.01 - Initial version of the button class
+ * @author Anton Bogun
+ * @author Liavontsi Brechka
+ * @studentID 300863440
+ * @studentID 300800345
+ * @date July 29, 2016
+ * @description This file is the entry point for the game
+ * @version 0.1 - Initial version of the side scroller
  */
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

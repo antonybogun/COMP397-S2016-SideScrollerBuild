@@ -1,3 +1,12 @@
+/**
+ * @author Anton Bogun
+ * @author Liavontsi Brechka
+ * @studentID 300863440
+ * @studentID 300800345
+ * @date July 29, 2016
+ * @description This file is the entry point for the game
+ * @version 0.1 - Initial version of the side scroller
+ */
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -36,7 +45,7 @@ var objects;
          * @returns {void}
          */
         Planet.prototype._reset = function () {
-            this.y = Math.floor((Math.random() * (480 - (this.width * 0.5))) + (this.width * 0.5));
+            this.y = Math.floor((Math.random() * (480 - (this.width * 1))) + (this.width * 0.5));
             // get a random x location
             this.x = 640 + this.width;
         };

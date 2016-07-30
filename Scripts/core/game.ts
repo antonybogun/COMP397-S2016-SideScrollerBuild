@@ -5,7 +5,7 @@
  * @author Liavontsi Brechka
  * @studentID 300863440
  * @studentID 300800345
- * @date July 28, 2016
+ * @date July 29, 2016
  * @description This file is the entry point for the game
  * @version 0.1 - Initial version of the side scroller
  */
@@ -48,9 +48,10 @@ namespace core {
         {id: "restartButton", src: "Assets/images/restartButton.png"},
         {id: "nextButton", src: "Assets/images/nextButton.png"},
         {id: "exitButton", src: "Assets/images/exitButton.png"},
-        {id: "island", src: "Assets/images/island.png"},
-        {id: "sheep", src: "Assets/images/sheep.png"},
-        {id: "asteroid", src: "Assets/images/asteroid.png"},
+        {id: "planet", src: "Assets/images/planet.png"},
+        {id: "infectedPlanet", src: "Assets/images/infectedPlanet.png"},
+        {id: "zombie", src: "Assets/images/zombie.png"},
+        {id: "chargedCloud", src: "Assets/images/chargedCloud.png"},
         {id: "space", src: "Assets/images/space.png"},
         {id: "live", src: "Assets/images/live.png"},
         {id: "baaaa", src: "Assets/audio/baaaa.wav"},

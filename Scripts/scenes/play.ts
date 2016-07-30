@@ -63,7 +63,7 @@ module scenes {
             }
 
             // add core label
-            this._scoreLabel = new objects.Label("Score: " + core.score, "40px", "Consolas", "#7200ff", 450, 5, false);
+            this._scoreLabel = new objects.Label("Score: " + core.score, "40px", "Broadway", "#7200ff", 450, 5, false);
             this._scoreLabel.textAlign = "center";
             this.addChild(this._scoreLabel);
 

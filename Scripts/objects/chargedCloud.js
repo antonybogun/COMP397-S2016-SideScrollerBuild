@@ -1,3 +1,12 @@
+/**
+ * @author Anton Bogun
+ * @author Liavontsi Brechka
+ * @studentID 300863440
+ * @studentID 300800345
+ * @date July 29, 2016
+ * @description This file is the entry point for the game
+ * @version 0.1 - Initial version of the side scroller
+ */
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -25,7 +34,6 @@ var objects;
             _super.call(this, imageString);
             this.start();
         }
-
         Object.defineProperty(ChargedCloud.prototype, "dy", {
             // PUBLIC PROPERTIES +++++++++++++++++++++++++++++++++++++++
             get: function () {
@@ -59,6 +67,7 @@ var objects;
         ChargedCloud.prototype._reset = function () {
             this._dx = -Math.floor((Math.random() * 5) + 5); // horizontal speed
             this._dy = -Math.floor((Math.random() * 4) - 2); // vertical drift
+            this.rotation = Math.floor(Math.random() * 360);
             // get a random y location
             this.y = Math.floor((Math.random() * (480 - (this.width * 0.5))) + (this.width * 0.5));
             this.x = 640 + this.width;
@@ -105,6 +114,10 @@ var objects;
             this._checkBounds();
             this.position.x = this.x;
             this.position.y = this.y;
+            if (this.alpha == 1)
+                this.alpha = 0;
+            else
+                this.alpha = 1;
         };
         return ChargedCloud;
     }(objects.GameObject));

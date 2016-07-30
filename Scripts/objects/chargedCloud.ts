@@ -1,3 +1,13 @@
+/**
+ * @author Anton Bogun
+ * @author Liavontsi Brechka
+ * @studentID 300863440
+ * @studentID 300800345
+ * @date July 29, 2016
+ * @description This file is the entry point for the game
+ * @version 0.1 - Initial version of the side scroller
+ */
+
 module objects {
     /**
      * This is the ChargedCloud object used in the game
@@ -53,7 +63,7 @@ module objects {
         private _reset():void {
             this._dx = -Math.floor((Math.random() * 5) + 5); // horizontal speed
             this._dy = -Math.floor((Math.random() * 4) - 2); // vertical drift
-
+            this.rotation = Math.floor(Math.random()*360);
             // get a random y location
             this.y = Math.floor((Math.random() * (480 - (this.width * 0.5))) + (this.width * 0.5));
 
@@ -105,6 +115,10 @@ module objects {
             this._checkBounds();
             this.position.x = this.x;
             this.position.y = this.y;
+            if(this.alpha ==1)
+                this.alpha=0;
+            else
+                this.alpha=1;
         }
     }
 }
