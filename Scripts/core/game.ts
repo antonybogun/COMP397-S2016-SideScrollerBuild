@@ -46,8 +46,7 @@ namespace core {
         {id: "startButton", src: "Assets/images/startButton.png"},
         {id: "instructionsButton", src: "Assets/images/instructionsButton.png"},
         {id: "restartButton", src: "Assets/images/restartButton.png"},
-        {id: "nextButton", src: "Assets/images/nextButton.png"},
-        {id: "exitButton", src: "Assets/images/exitButton.png"},
+        {id: "returnButton", src: "Assets/images/returnButton.png"},
         {id: "planet", src: "Assets/images/planet.png"},
         {id: "infectedPlanet", src: "Assets/images/infectedPlanet.png"},
         {id: "zombie", src: "Assets/images/zombie.png"},
@@ -56,7 +55,7 @@ namespace core {
         {id: "live", src: "Assets/images/live.png"},
         {id: "baaaa", src: "Assets/audio/baaaa.wav"},
         {id: "explosion", src: "Assets/audio/explosion.wav"},
-        {id: "main_theme", src: "Assets/audio/main_theme.ogg"},
+        {id: "main_theme", src: "Assets/audio/main_theme.wav"},
         {id: "over", src: "Assets/audio/over.wav"}
     ];
 

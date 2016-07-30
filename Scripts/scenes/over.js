@@ -35,7 +35,7 @@ var scenes;
             this._finalScoreLabel = new objects.Label("FINAL SCORE: " + core.score, "40px", "Broadway", "#7200ff", 320, 240, true);
             this.addChild(this._finalScoreLabel);
             // add the start button
-            this._restartButton = new objects.Button("restartButton", 320, 380, true);
+            this._restartButton = new objects.Button("restartButton", 320, 440, true);
             this.addChild(this._restartButton);
             // Start button event listener
             this._restartButton.on("click", this._restartButtonClick, this);

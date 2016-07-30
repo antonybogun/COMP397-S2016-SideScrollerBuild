@@ -45,7 +45,7 @@ module scenes {
 
             // add the start button
             this._restartButton = new objects.Button(
-                "restartButton", 320, 380, true
+                "restartButton", 320, 440, true
             );
             this.addChild(this._restartButton);
 
