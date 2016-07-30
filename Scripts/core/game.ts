@@ -3,7 +3,7 @@
 /**
  * @author Anton Bogun
  * @author Liavontsi Brechka
- * @studentID
+ * @studentID 300863440
  * @studentID 300800345
  * @date July 28, 2016
  * @description This file is the entry point for the game

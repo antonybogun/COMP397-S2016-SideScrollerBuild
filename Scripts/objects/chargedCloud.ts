@@ -1,12 +1,12 @@
 module objects {
     /**
-     * This is the Asteroid object used in the game
+     * This is the ChargedCloud object used in the game
      *
      * @export
-     * @class Asteroid
+     * @class ChargedCloud
      * @extends {createjs.Bitmap}
      */
-    export class Asteroid extends GameObject {
+    export class ChargedCloud extends GameObject {
         // PRIVATE INSTANCE VARIABLES ++++++++++++++++++++++++++++
         private _dy:number;
         private _dx:number;
@@ -30,7 +30,7 @@ module objects {
 
         // CONSTRUCTORS +++++++++++++++++++++++++++++++++++++++++++
         /**
-         * Creates an instance of Asteroid.
+         * Creates an instance of ChargedCloud.
          *
          * @constructor
          * @param {string} imageString
@@ -53,7 +53,7 @@ module objects {
         private _reset():void {
             this._dx = -Math.floor((Math.random() * 5) + 5); // horizontal speed
             this._dy = -Math.floor((Math.random() * 4) - 2); // vertical drift
-            this.rotation=Math.floor(Math.random()*360);
+
             // get a random y location
             this.y = Math.floor((Math.random() * (480 - (this.width * 0.5))) + (this.width * 0.5));
 

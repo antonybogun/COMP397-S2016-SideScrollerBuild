@@ -58,6 +58,7 @@ var objects;
         Asteroid.prototype._reset = function () {
             this._dx = -Math.floor((Math.random() * 5) + 5); // horizontal speed
             this._dy = -Math.floor((Math.random() * 4) - 2); // vertical drift
+            this.rotation = Math.floor(Math.random() * 360);
             // get a random y location
             this.y = Math.floor((Math.random() * (480 - (this.width * 0.5))) + (this.width * 0.5));
             this.x = 640 + this.width;

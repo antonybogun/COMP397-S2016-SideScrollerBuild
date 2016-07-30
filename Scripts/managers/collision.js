@@ -23,8 +23,8 @@ var managers;
         Collision.prototype.check = function (object1, object2) {
             if (objects.Vector2.distance(object1.position, object2.position)
                 <= (object1.halfHeight + object2.halfHeight)) {
-                // if asteroid collides with another one
-                if (object1.name === "asteroid" && object2.name === "asteroid") {
+                // if chargedCloud collides with another one
+                if (object1.name === "chargedCloud" && object2.name === "chargedCloud") {
                     var tempDx = object1.dx;
                     var tempDy = object1.dy;
                     object1.dx = object2.dx;
@@ -41,24 +41,25 @@ var managers;
                             object2.x += (object1.width - (object2.x - object1.x) + 1);
                     }
                 }
-                else if (object1.name === "sheep") {
+                else if (object1.name === "zombie") {
                     if (!object2.isColliding) {
                         object2.isColliding = true;
-                        // if plane collides with cloud
-                        if (object2.name === "asteroid") {
+                        // if zombie collides with cloud
+                        if (object2.name === "chargedCloud") {
                             core.currentLives -= 1;
                             createjs.Sound.play("explosion");
                         }
-                        // if plane collides with island
-                        if (object2.name === "island") {
+                        // if zombie collides with island
+                        if (object2.name === "planet") {
+                            // TO-DO: change to asset load
+                            object2.image.src = "Assets/images/infectedPlanet.png";
                             core.score += 100;
                             createjs.Sound.play("baaaa");
                         }
                     }
                 }
             }
-            else {
-                object1.isColliding = false;
+            else if (object1.name === "zombie") {
                 object2.isColliding = false;
             }
         };
