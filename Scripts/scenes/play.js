@@ -28,18 +28,18 @@ var scenes;
             this._space = new objects.Space("space");
             this.addChild(this._space);
             // island object
-            this._island = new objects.Island("island");
-            this.addChild(this._island);
+            this._planet = new objects.Planet("planet");
+            this.addChild(this._planet);
             // player object
-            this._player = new objects.Player("sheep");
+            this._player = new objects.Player("zombie");
             this.addChild(this._player);
             this._themeSound = createjs.Sound.play("main_theme");
             this._themeSound.loop = -1;
-            // asteroid array
-            this._asteroids = new Array();
+            // charged cloud array
+            this._chargedClouds = new Array();
             for (var i = 0; i < 3; i++) {
-                this._asteroids.push(new objects.Asteroid("asteroid"));
-                this.addChild(this._asteroids[i]);
+                this._chargedClouds.push(new objects.ChargedCloud("chargedCloud"));
+                this.addChild(this._chargedClouds[i]);
             }
             // include a collision managers
             this._collision = new managers.Collision();
@@ -52,7 +52,7 @@ var scenes;
                 this.addChild(this._liveIcons[i]);
             }
             // add core label
-            this._scoreLabel = new objects.Label("Score: " + core.score, "40px", "Consolas", "#e74c3c", 450, 5, false);
+            this._scoreLabel = new objects.Label("Score: " + core.score, "40px", "Consolas", "#7200ff", 450, 5, false);
             this._scoreLabel.textAlign = "center";
             this.addChild(this._scoreLabel);
             // add this scene to the global scene container
@@ -61,13 +61,13 @@ var scenes;
         Play.prototype.Update = function () {
             var _this = this;
             this._space.update();
-            this._island.update();
+            this._planet.update();
             this._player.update();
-            this._collision.check(this._player, this._island);
-            this._asteroids.forEach(function (asteroid) {
+            this._collision.check(this._player, this._planet);
+            this._chargedClouds.forEach(function (asteroid) {
                 asteroid.update();
                 _this._collision.check(_this._player, asteroid);
-                _this._asteroids.forEach(function (anotherAsteroid) {
+                _this._chargedClouds.forEach(function (anotherAsteroid) {
                     if (anotherAsteroid != asteroid &&
                         asteroid.isColliding === anotherAsteroid.isColliding) {
                         _this._collision.check(asteroid, anotherAsteroid);

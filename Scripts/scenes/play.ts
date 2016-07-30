@@ -2,9 +2,9 @@ module scenes {
     export class Play extends objects.Scene {
         //  PRIVATE INSTANCE VARIABLES
         private _space:objects.Space;
-        private _island:objects.Island;
+        private _planet:objects.Planet;
         private _player:objects.Player;
-        private _asteroids:objects.Asteroid[];
+        private _chargedClouds:objects.ChargedCloud[];
         private _collision:managers.Collision;
         private _scoreLabel:objects.Label;
         private _liveIcons:createjs.Bitmap[];
@@ -34,20 +34,20 @@ module scenes {
             this.addChild(this._space);
 
             // island object
-            this._island = new objects.Island("island");
-            this.addChild(this._island);
+            this._planet = new objects.Planet("planet");
+            this.addChild(this._planet);
 
             // player object
-            this._player = new objects.Player("sheep");
+            this._player = new objects.Player("zombie");
             this.addChild(this._player);
             this._themeSound = createjs.Sound.play("main_theme");
             this._themeSound.loop = -1;
 
-            // asteroid array
-            this._asteroids = new Array<objects.Asteroid>();
+            // charged cloud array
+            this._chargedClouds = new Array<objects.ChargedCloud>();
             for (let i = 0; i < 3; i++) {
-                this._asteroids.push(new objects.Asteroid("asteroid"));
-                this.addChild(this._asteroids[i]);
+                this._chargedClouds.push(new objects.ChargedCloud("chargedCloud"));
+                this.addChild(this._chargedClouds[i]);
             }
 
             // include a collision managers
@@ -63,7 +63,7 @@ module scenes {
             }
 
             // add core label
-            this._scoreLabel = new objects.Label("Score: " + core.score, "40px", "Consolas", "#e74c3c", 450, 5, false);
+            this._scoreLabel = new objects.Label("Score: " + core.score, "40px", "Consolas", "#7200ff", 450, 5, false);
             this._scoreLabel.textAlign = "center";
             this.addChild(this._scoreLabel);
 
@@ -73,14 +73,14 @@ module scenes {
 
         public Update():void {
             this._space.update();
-            this._island.update();
+            this._planet.update();
             this._player.update();
-            this._collision.check(this._player, this._island);
+            this._collision.check(this._player, this._planet);
 
-            this._asteroids.forEach(asteroid => {
+            this._chargedClouds.forEach(asteroid => {
                 asteroid.update();
                 this._collision.check(this._player, asteroid);
-                this._asteroids.forEach(anotherAsteroid => {
+                this._chargedClouds.forEach(anotherAsteroid => {
                     if (anotherAsteroid != asteroid &&
                         asteroid.isColliding === anotherAsteroid.isColliding) {
                         this._collision.check(asteroid, anotherAsteroid);

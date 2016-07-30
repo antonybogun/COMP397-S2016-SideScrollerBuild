@@ -6,26 +6,47 @@ var __extends = (this && this.__extends) || function (d, b) {
 var objects;
 (function (objects) {
     /**
-     * This is the Island object used in the game
+     * This is the ChargedCloud object used in the game
      *
      * @export
-     * @class Island
+     * @class ChargedCloud
      * @extends {createjs.Bitmap}
      */
-    var Island = (function (_super) {
-        __extends(Island, _super);
-        // PUBLIC PROPERTIES
+    var ChargedCloud = (function (_super) {
+        __extends(ChargedCloud, _super);
         // CONSTRUCTORS +++++++++++++++++++++++++++++++++++++++++++
         /**
-         * Creates an instance of Island.
+         * Creates an instance of ChargedCloud.
          *
          * @constructor
          * @param {string} imageString
          */
-        function Island(imageString) {
+        function ChargedCloud(imageString) {
             _super.call(this, imageString);
             this.start();
         }
+
+        Object.defineProperty(ChargedCloud.prototype, "dy", {
+            // PUBLIC PROPERTIES +++++++++++++++++++++++++++++++++++++++
+            get: function () {
+                return this._dy;
+            },
+            set: function (newDy) {
+                this._dy = newDy;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(ChargedCloud.prototype, "dx", {
+            get: function () {
+                return this._dx;
+            },
+            set: function (newDx) {
+                this._dx = newDx;
+            },
+            enumerable: true,
+            configurable: true
+        });
         // PRIVATE METHODS ++++++++++++++++++++++++++++++++++++++++++++
         /**
          * Resets the object outside of the viewport
@@ -35,9 +56,11 @@ var objects;
          * @method _reset
          * @returns {void}
          */
-        Island.prototype._reset = function () {
+        ChargedCloud.prototype._reset = function () {
+            this._dx = -Math.floor((Math.random() * 5) + 5); // horizontal speed
+            this._dy = -Math.floor((Math.random() * 4) - 2); // vertical drift
+            // get a random y location
             this.y = Math.floor((Math.random() * (480 - (this.width * 0.5))) + (this.width * 0.5));
-            // get a random x location
             this.x = 640 + this.width;
         };
         /**
@@ -47,7 +70,7 @@ var objects;
          * @method _checkBounds
          * @returns {void}
          */
-        Island.prototype._checkBounds = function () {
+        ChargedCloud.prototype._checkBounds = function () {
             if (this.x <= (0 - this.width)) {
                 this._reset();
             }
@@ -61,13 +84,12 @@ var objects;
          * @method start
          * @returns {void}
          */
-        Island.prototype.start = function () {
+        ChargedCloud.prototype.start = function () {
             this.width = this.getBounds().width;
             this.height = this.getBounds().height;
             this.regX = this.width * 0.5;
             this.regY = this.height * 0.5;
             this._reset();
-            this._dx = -5; // 5px per frame down
         };
         /**
          * This method updates the object's properties
@@ -77,14 +99,15 @@ var objects;
          * @method update
          * @returns {void}
          */
-        Island.prototype.update = function () {
+        ChargedCloud.prototype.update = function () {
+            this.y += this._dy;
             this.x += this._dx;
             this._checkBounds();
             this.position.x = this.x;
             this.position.y = this.y;
         };
-        return Island;
+        return ChargedCloud;
     }(objects.GameObject));
-    objects.Island = Island;
+    objects.ChargedCloud = ChargedCloud;
 })(objects || (objects = {}));
-//# sourceMappingURL=island.js.map
+//# sourceMappingURL=chargedCloud.js.map
