@@ -42,6 +42,7 @@ module scenes {
             this.addChild(this._player);
             this._themeSound = createjs.Sound.play("main_theme");
             this._themeSound.loop = -1;
+            this._themeSound.volume=0.1;
 
             // asteroid array
             this._asteroids = new Array<objects.Asteroid>();
