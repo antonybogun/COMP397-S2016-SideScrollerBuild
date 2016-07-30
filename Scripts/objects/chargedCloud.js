@@ -25,7 +25,6 @@ var objects;
             _super.call(this, imageString);
             this.start();
         }
-
         Object.defineProperty(ChargedCloud.prototype, "dy", {
             // PUBLIC PROPERTIES +++++++++++++++++++++++++++++++++++++++
             get: function () {

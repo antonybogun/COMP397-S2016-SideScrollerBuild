@@ -56,7 +56,7 @@ namespace core {
         {id: "live", src: "Assets/images/live.png"},
         {id: "baaaa", src: "Assets/audio/baaaa.wav"},
         {id: "explosion", src: "Assets/audio/explosion.wav"},
-        {id: "main_theme", src: "Assets/audio/main_theme.ogg"},
+        {id: "main_theme", src: "Assets/audio/main_theme.wav"},
         {id: "over", src: "Assets/audio/over.wav"}
     ];
 
